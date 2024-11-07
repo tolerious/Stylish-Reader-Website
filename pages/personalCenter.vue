@@ -1,5 +1,6 @@
 <template>
   <div>personalCenter</div>
+  <NuxtLink to="/">Home</NuxtLink>
 </template>
 
 <script setup lang="ts">
