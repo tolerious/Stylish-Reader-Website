@@ -1,4 +1,11 @@
 <template>
   <div>Homepage</div>
-  <div class="bg-pink-500">Content</div>
+  <div class="">Content</div>
+  <NuxtLink to="/personalCenter">personalCenter</NuxtLink>
 </template>
+
+<script setup lang="ts">
+definePageMeta({
+  title: "首页",
+});
+</script>
