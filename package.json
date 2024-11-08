@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxtjs/robots": "^4.1.11",
     "@nuxtjs/sitemap": "^6.1.5",
+    "@pinia/nuxt": "^0.7.0",
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest"
