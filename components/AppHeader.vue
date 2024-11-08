@@ -1,14 +1,14 @@
 <template>
   <header
     class="h-[64px] w-full bg-white shadow-sm shadow-slate-200"
-    v-if="isHeaderFooterVisible"
+    v-if="isVisible"
   >
     <div
       class="max-w-screen-xl px-5 py-3 m-auto grid top-0 grid-rows-1 lg:grid-cols-[150px_1fr_150px] h-full grid-cols-3"
     >
       <div class="lg:hidden"></div>
       <div
-        @click="router.push('/')"
+        @click="navigateTo('/')"
         class="cursor-pointer flex flex-row justify-start items-center mx-auto"
       >
         <img src="/images/logo.svg" alt="" srcset="" class="h-full" />
@@ -58,33 +58,36 @@
 <script setup lang="ts">
 import { useStylishStore } from "@/stores/stylish";
 import { computed, onMounted } from "vue";
-import { useRouter } from "vue-router";
+
+const token = useCookie("token");
 
 defineProps({
-  isHeaderFooterVisible: { type: Boolean, default: true },
+  isVisible: { type: Boolean, default: true },
 });
-
-const router = useRouter();
 
 const { setLoginState, getLoginState } = useStylishStore();
 
 const isLogin = computed(() => getLoginState());
 
 function goToPersonalCenter() {
-  router.push("/center");
+  if (isLogin.value) {
+    navigateTo("/personalcenter");
+  } else {
+    navigateTo("/login");
+  }
 }
 
 function logout() {
-  localStorage.removeItem("token");
+  token.value = null;
   setLoginState(false);
-  router.push("/");
+  navigateTo("/");
   setTimeout(() => {
     window.location.reload();
   }, 500);
 }
 
 onMounted(() => {
-  if (localStorage.getItem("token") !== null) {
+  if (token.value) {
     setLoginState(true);
   }
 });

@@ -1,3 +1,8 @@
-const hostname = useRuntimeConfig().public.apiServer;
-console.log("hostname", hostname);
-export const login = `${hostname}/login`;
+export function getApiUrls() {
+  const hostname = useRuntimeConfig().public.apiServer;
+
+  return {
+    loginUrl: `${hostname}/login`,
+    registerUrl: `${hostname}/create`,
+  };
+}

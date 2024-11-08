@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 const route = useRoute();
+
 useSeoMeta({
   title: `Stylish Reader | ${route.meta.title}`,
   ogTitle: `Stylish Reader | ${route.meta.title}`,

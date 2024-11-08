@@ -1,11 +1,11 @@
 export const useStylishStore = defineStore("stylish", () => {
   const count = ref(0);
   const _isLogin = ref(false);
+  const token = useCookie("token");
 
   const isLogin = computed({
     get(): boolean {
-      const token = localStorage.getItem("token");
-      if (token || _isLogin.value) {
+      if (token.value || _isLogin.value) {
         return true;
       }
       return false;
@@ -16,8 +16,7 @@ export const useStylishStore = defineStore("stylish", () => {
   });
 
   function getLoginState(): boolean {
-    const token = localStorage.getItem("token");
-    if (token || _isLogin.value) {
+    if (token.value || _isLogin.value) {
       return true;
     }
     return false;
