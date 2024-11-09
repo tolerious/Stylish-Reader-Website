@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "stylish-reader-website",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,8 +10,14 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxtjs/robots": "^4.1.11",
+    "@nuxtjs/sitemap": "^6.1.5",
+    "@pinia/nuxt": "^0.7.0",
     "nuxt": "^3.13.2",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^6.12.2"
   }
 }
